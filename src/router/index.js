@@ -6,9 +6,26 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: import('@/views/HomeView/index.vue')
+      name: 'layout',
+      component: () => import('@/views/layout/index.vue'),
+      children: [
+        {
+          path: "",
+          name: 'home',
+          component: () => import('@/views/home/index.vue')
+        },
+        {
+          path: "category",
+          name: 'category',
+          component: () => import('@/views/category/index.vue')
+        }
+      ]
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/views/login/index.vue')
+    }
   ]
 })
 
